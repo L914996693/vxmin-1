@@ -6,7 +6,8 @@
     "pages/logs/logs",
     "pages/appformrecord/appformrecord",
     "pages/orderdetails/orderdetails",
-    "pages/applydetails/applydetails"
+    "pages/applydetails/applydetails",
+    "pages/fillinformation/fillinformation"
   ],
   "window":{
     "backgroundTextStyle":"dark",

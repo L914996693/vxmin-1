@@ -2,62 +2,88 @@
 
 Page({
   dayClick: function (event) {
-    //event.detail='#00BFFF';
+    //console.log(event.detail);
     //console.log(event.detail.year+"-"+event.detail.month+"-"+event.detail.day);
     var month = event.detail.month
-    var index = this.returnexistencemonth(this.data.effectivemonth,month)
-    if(index===1){
-      this.setData({
-        androidDialog2: true,
-        preselectdate:event.detail.year+"-"+event.detail.month+"-"+event.detail.day
-      });
-    }else{
-
+    var year = event.detail.year
+    var day = event.detail.day
+    var index_year = this.returnexistenceyear(this.data.effectiveyears,year)
+    if(index_year===1){
+      var index_month = this.returnexistencemonth(this.data.effectivemonth,month)
+      if(index_month===1){
+        let years_arr = this.data.effectivedays[year];
+        let month_arr = years_arr[month];
+        var index_day = this.returnexistenceday(month_arr,day)
+        //console.log(index_day)
+        if(index_day===1){
+          this.setData({
+            androidDialog2: true,
+            preselectdate:event.detail.year+"-"+event.detail.month+"-"+event.detail.day
+          });
+        }  
+      }else{
+  
+      }
     }
-    
-    //console.log("月份="+event.detail.month+"--日期="+event.detail.day);
-    
   },
   next: function (event) {
     var month = event.detail.currentMonth
-    var index = this.returnexistencemonth(this.data.effectivemonth,month)
-    //console.log(index);
-    if(index===1){
-      let days_style = new Array;
-      days_style.push(
-        {month: 'current', day: 12, color: '#314580', background: '#6495ED'},
-        {month: 'current', day: 2, color: '#314580', background: '#6495ED'}
-      )
-      this.setData({
-        days_style:days_style
-      })
+    var year = event.detail.currentYear
+    var index_year = this.returnexistenceyear(this.data.effectiveyears,year)
+    if(index_year===1){
+      var index = this.returnexistencemonth(this.data.effectivemonth,month)
+      if(index===1){
+        let days_style = new Array;
+        let mdata = this.data.effectivedays;
+        let arr_year = mdata[year];
+        let arr_month = arr_year[month];
+        for(let i=0;i<arr_month.length;i++){
+          days_style.push({month: 'current', day: arr_month[i], color: '#314580', background: '#6495ED'});
+        }
+        this.setData({
+          days_style:days_style
+        })
+      }else{
+        let days_style = new Array;
+        this.setData({
+          days_style:days_style
+        })
+      }
     }else{
       let days_style = new Array;
-      this.setData({
-        days_style:days_style
-      })
+        this.setData({
+          days_style:days_style
+        })
     }
-    
-    //console.log(event.detail);
   },
   prev: function (event) {
     var month = event.detail.currentMonth
-    var index = this.returnexistencemonth(this.data.effectivemonth,month)
-    //console.log(index);
-    if(index===1){
-      let days_style = new Array;
-      days_style.push(
-        {month: 'current', day: 12, color: '#314580', background: '#6495ED'},
-        {month: 'current', day: 2, color: '#314580', background: '#6495ED'}
-      )
-      this.setData({
-        days_style:days_style
-      })
+    var year = event.detail.currentYear
+    var index_year = this.returnexistenceyear(this.data.effectiveyears,year)
+    if(index_year===1){
+      var index = this.returnexistencemonth(this.data.effectivemonth,month)
+      if(index===1){
+        let days_style = new Array;
+        let mdata = this.data.effectivedays;
+        let arr_year = mdata[year];
+        let arr_month = arr_year[month];
+        for(let i=0;i<arr_month.length;i++){
+          days_style.push({month: 'current', day: arr_month[i], color: '#314580', background: '#6495ED'});
+        }
+        this.setData({
+          days_style:days_style
+        })
+      }else{
+        let days_style = new Array;
+        this.setData({
+          days_style:days_style
+        })
+      }
     }else{
       let days_style = new Array;
-      this.setData({
-        days_style:days_style
-      })
+        this.setData({
+          days_style:days_style
+        })
     }
   },
   dateChange: function (event) {
@@ -68,10 +94,13 @@ Page({
    */
   data: {
     effectivedays:{
-      "11":[1,15],
-      "12":[3,5],
+      "2020":{
+        "11":[1,15],
+        "12":[3,5],
+      }
     },
     effectivemonth:[11,12],
+    effectiveyears:[2020],
     preselectdate:'',
     selectdate:'',
     androidDialog2:false,
@@ -161,21 +190,25 @@ Page({
     var m = date.getMinutes();  
     //秒  
     var s = date.getSeconds();
-    var index = this.returnexistencemonth(this.data.effectivemonth,M)
-    //console.log(index)
-    if(index===1){
-      let days_style = new Array;
-      let mdata = this.data.effectivedays;
-
-      console.log(mdata[M]);
-      days_style.push(
-        {month: 'current', day: 11, color: '#314580', background: '#6495ED'},
-        {month: 'current', day: 1, color: '#314580', background: '#6495ED'}
-      )
-      this.setData({
-        days_style:days_style
-      })
+    var index_year = this.returnexistenceyear(this.data.effectiveyears,Y)
+    if(index_year===1){
+      var index = this.returnexistencemonth(this.data.effectivemonth,M)
+      if(index===1){
+        let days_style = new Array;
+        let mdata = this.data.effectivedays;
+  
+        let arr_year = mdata[Y];
+        let arr_month = arr_year[M];
+        for(let i=0;i<arr_month.length;i++){
+          days_style.push({month: 'current', day: arr_month[i], color: '#314580', background: '#6495ED'});
+        }
+        
+        this.setData({
+          days_style:days_style
+        })
+      }
     }
+    
     
   },
 
@@ -227,9 +260,49 @@ Page({
   onShareAppMessage: function () {
 
   },
+
+  /** 
+   * 跳转至填写申请信息页面
+  */
+  fillinformation:function(e){
+    //console.log(e.currentTarget.dataset.operation)
+    if(e.currentTarget.dataset.operation!=''){
+      var date = 'date:'+e.currentTarget.dataset.operation;
+      wx.navigateTo({
+        url: '/pages/fillinformation/fillinformation?json='+ JSON.stringify(date),
+      })
+    }
+    
+  },
+
+  /**
+   * 判断月份是否在数组内
+   */
   returnexistencemonth:function(effectivemonth,nowmonth){
     for(let i=0;i<effectivemonth.length;i++){
       if(nowmonth===effectivemonth[i]){
+        return 1;
+      }
+    }
+    return -1;
+  },
+  /**
+   * 判断日期是否在数组内
+   */
+  returnexistenceday:function(effectivedays,nowday){
+    for(let i=0;i<effectivedays.length;i++){
+      if(nowday===effectivedays[i]){
+        return 1;
+      }
+    }
+    return -1;
+  },
+  /**
+   * 判断年份是否在数组内
+   */
+  returnexistenceyear:function(effectiveyears,nowyear){
+    for(let i=0;i<effectiveyears.length;i++){
+      if(nowyear===effectiveyears[i]){
         return 1;
       }
     }
