@@ -267,7 +267,7 @@ Page({
   fillinformation:function(e){
     //console.log(e.currentTarget.dataset.operation)
     if(e.currentTarget.dataset.operation!=''){
-      var date = 'date:'+e.currentTarget.dataset.operation;
+      var date = e.currentTarget.dataset.operation;
       wx.navigateTo({
         url: '/pages/fillinformation/fillinformation?json='+ JSON.stringify(date),
       })

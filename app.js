@@ -53,6 +53,7 @@ App({
     })
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    url_appfromrecord:"http://192.168.1.131:8082/wx/test",
   }
 })

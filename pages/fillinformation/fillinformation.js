@@ -5,14 +5,56 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    value: '',
+    showClearBtn: false,
+    isWaring: false,
+    array3: ['中国', '美国', '英国'],
+    value3: 0,
   },
+
+  onInput(evt) {
+    const { value } = evt.detail;
+    this.setData({
+        value,
+        showClearBtn: !!value.length,
+        isWaring: false,
+    });
+  },
+
+  onClear() {
+    this.setData({
+        value: '',
+        showClearBtn: false,
+        isWaring: false,
+    });
+  },
+
+  /**
+   * 判断卡号长度
+   */
+  onConfirm() {
+    if (this.data.value.length < 16) {
+        this.setData({
+            isWaring: true,
+        });
+    }
+  },
+
+  /**
+   * 获取并改变下拉框信息 
+   */
+  bindPicker3Change: function(e) {
+    this.setData({
+        value3: e.detail.value
+    })
+},
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options.json);
+    let o = options.json;
+    console.log(o);
   },
 
   /**

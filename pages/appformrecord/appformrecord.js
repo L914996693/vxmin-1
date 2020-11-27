@@ -99,9 +99,8 @@ Page({
   /*与后台连通性测试 */
   testjava(e){
     const operation = e.currentTarget.dataset.operation;
-    //console.log(operation);
     wx.request({
-      url: "http://127.0.0.1:8082/wx/test",
+      url: getApp().globalData.url_appfromrecord,
       header: {
         "Content-Type": "application/json"
       },
