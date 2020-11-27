@@ -1,0 +1,6 @@
+{
+  "usingComponents": {},
+  "navigationBarTitleText": "收料申请",
+  "navigationBarTextStyle":"white",
+  "enablePullDownRefresh":true
+}

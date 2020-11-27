@@ -1,0 +1,36 @@
+<!--pages/appformrecord/appformrecord.wxml-->
+<view class="page" data-weui-theme="{{theme}}">
+	<!-- <view class="page__hd">
+		<view class="page__title">收获申请单列表</view>
+		<view class="page__desc">表单预览</view>
+	</view> -->
+	<view class="page__bd" wx:for="{{data_list}}" wx:key="id" wx:for-item="item" wx:for-index="index">
+		<view class="weui-form-preview">
+			<view class="weui-form-preview__hd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">付款金额</label>
+					<em class="weui-form-preview__value">¥{{item.acc}}</em>
+				</view>
+			</view>
+			<view class="weui-form-preview__bd">
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">商品</label>
+					<text class="weui-form-preview__value">{{item.proname}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">标题标题</label>
+					<text class="weui-form-preview__value">{{item.hname1}}</text>
+				</view>
+				<view class="weui-form-preview__item">
+					<label class="weui-form-preview__label">标题标题</label>
+					<text class="weui-form-preview__value">{{item.hname2}}</text>
+				</view>
+			</view>
+			<view class="weui-form-preview__ft">
+				<a class="weui-form-preview__btn weui-form-preview__btn_primary" bindtap="testjava" data-operation="{{item.id}}">详情</a>
+			</view>
+		</view>
+		
+		
+	</view>
+</view>

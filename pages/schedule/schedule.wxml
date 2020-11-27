@@ -1,0 +1,100 @@
+<!--pages/schedule/schedule.wxml-->
+<!--
+<view>{{msg}}</view>
+<view>{{num}}</view>
+<view>{{isb}}</view>
+<view>{{person.age}}</view>
+<view>{{person.height}}</view>
+<view>{{person.weight}}</view>
+<view>{{person.name}}</view>
+<view data-num="{{num}}">z</view>
+
+<view>
+  <checkbox checked="{{true}}"></checkbox>
+</view>
+
+<view>{{1+1}}</view>
+<view>{{'1'+'1'}}</view>
+<view>{{10%2==0?'偶数':'奇数'}}</view>-->
+
+<!--列表循环 wx:for-item="循环项的名称" wx:for-index="循环项的索引"
+    wx:key="用来提高列表的性能"
+    wx:key="*this" 就表示你的数组是一个普通数组 *this表示是循环项
+-->
+<!-- <view>
+  <view wx:for="{{data_list}}" wx:key="id" wx:for-item="item" wx:for-index="index">
+    索引：{{index}}
+    ------
+    值:{{item.name}}
+  </view>
+</view>
+
+<view>
+  <view>对象循环</view>
+  <view wx:for="{{person}}" wx:key="id" wx:for-item="value" wx:for-index="key">
+    属性：{{key}}
+    --
+    值：{{value}}
+  </view>
+</view>
+
+<view>
+  <block wx:for="{{data_list}}" wx:key="id" wx:for-item="item" wx:for-index="index">
+    索引：{{index}}
+    ------
+    值:{{item.name}}
+  </block>
+</view> -->
+
+<!-- <view>
+  <view>条件渲染</view>
+  <view wx:if="{{true}}">显示</view>
+  <view wx:if="{{false}}">隐藏</view>
+
+  <view wx:if="{{false}}">1</view>
+  <view wx:elif="{{false}}">2</view>
+  <view wx:else="{{true}}">3</view>
+
+  <view>hidden1</view>
+  <view hidden>hidden2</view>
+  <view hidden="{{true}}">hidden3</view>
+</view> -->
+<!-- <input type="text" value="{{num}}" bindinput="handleInput"/>
+<button bindtap="handletap" data-operation="{{1}}">+</button>
+<button bindtap="handletap" data-operation="{{-1}}">-</button>
+<view>
+  {{num}}
+</view> -->
+
+<!-- <view class="page__bd">
+		<view class="button-sp-area">
+      <a class="weui-btn weui-btn_primary">页面主操作</a>
+    </view>
+</view> -->
+<view style="margin-top:5%;height:60%">
+  <calendar binddayClick="dayClick" bindnextMonth="next" bindprevMonth="prev" binddateChange="dateChange"  days-color="{{days_style}}" calendar-style="calendar" weeks-type="cn" header-style="header" board-style="board" active-type="square" cell-size="40" weeks="true" />
+</view>
+
+
+<view class="weui-cells weui-cells_after-title" style="margin-top:20%">
+  <navigator url="" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+      <view class="weui-cell__bd">选择日期并填写信息<text decode="{{true}}"> &emsp;{{selectdate}}</text></view>
+      <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+  </navigator>
+</view>
+
+
+<view class="page" data-weui-theme="{{theme}}">
+    <view class="fadeIn" wx:if="{{androidDialog2}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog weui-skin_android">
+            <view class="weui-dialog__bd">
+              已选择日期:{{preselectdate}}
+            </view>
+            <view class="weui-dialog__ft">
+                <a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">重新选择</a>
+                <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="conclose">确认选择</a>
+            </view>
+        </view>
+    </view>
+</view>

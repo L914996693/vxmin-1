@@ -1,0 +1,3 @@
+/* pages/appformrecord/appformrecord.wxss */
+/* .weui-form-preview{margin-bottom:25px} */
+.page__bd{margin-top:5%;margin-bottom:-5%}

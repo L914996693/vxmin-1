@@ -1,0 +1,15 @@
+/* pages/schedule/schedule.wxss */
+@import "../../styles/weui.wxss";
+.board {
+  background-color: #FFFFFF;
+  color: black;
+}
+.header {
+  font-size: large; /*修改了标题文字和按钮的大小*/
+  color: #605eac;   /*修改了标题文字和按钮的颜色*/
+}
+.calendar {
+  background-color: #FFFFFF;
+  padding-top: 10px;
+}
+.page{background-color:var(--weui-BG-2)}
