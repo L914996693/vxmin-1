@@ -1,4 +1,7 @@
 // pages/schedule/schedule.js
+const app = getApp();
+//url_applicationre
+const WebSocket = require('../util/websocket.js');
 
 Page({
   dayClick: function (event) {
@@ -174,6 +177,12 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //创建连接
+    WebSocket.connectSocket();
+    // 设置接收消息回调
+    WebSocket.onSocketMessageCallback = this.onSocketMessageCallback;
+
+
     var timestamp = Date.parse(new Date());
     timestamp = timestamp / 1000;
     var n = timestamp * 1000;  
@@ -307,5 +316,19 @@ Page({
       }
     }
     return -1;
-  }
+  },
+
+  // Socket收到的信息
+  onSocketMessageCallback: function(res) {
+    var _this = this;
+    _this.setData({
+      effectivedays:{
+        "2020":{
+          "12":[5],
+        }
+      },
+      effectivemonth:[12]
+    })
+    console.log(res);
+  },
 })

@@ -1,4 +1,5 @@
 // pages/appformrecord/appformrecord.js
+const app = getApp();
 Page({
 
   /**
@@ -29,7 +30,7 @@ Page({
   onLoad: function (options) {
     var _this = this
     wx.request( {
-      url: "http://127.0.0.1:8082/wx/applicationre",
+      url: getApp().globalData.url_applicationre,
       header: {
         "Content-Type": "application/json"
       },

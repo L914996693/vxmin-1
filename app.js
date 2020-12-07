@@ -55,5 +55,7 @@ App({
   globalData: {
     userInfo: null,
     url_appfromrecord:"http://192.168.1.131:8082/wx/test",
+    url_webscoket:"ws://192.168.1.131:8082/wx/websocket",
+    url_applicationre:"http://127.0.0.1:8082/wx/applicationre",
   }
 })

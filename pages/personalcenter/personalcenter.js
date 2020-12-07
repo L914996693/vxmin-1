@@ -1,5 +1,6 @@
 //获取应用实例
-const app = getApp()
+const app = getApp();
+const WebSocket = require('../util/websocket.js');
 
 Page({
 
@@ -44,6 +45,21 @@ Page({
       })
     }
 
+    //创建连接
+    WebSocket.connectSocket();
+    // 设置接收消息回调
+    WebSocket.onSocketMessageCallback = this.onSocketMessageCallback;
+
+  },
+
+  // Socket收到的信息
+  onSocketMessageCallback: function(res) {
+    var _this = this;
+    _this.setData({
+      appformflag:false,
+      orderflag:false
+    })
+    console.log(res);
   },
 
   /**
@@ -71,7 +87,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    WebSocket.closeSocket();
   },
 
   /**
@@ -93,5 +109,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  /**
+   * 更新收料申请单记录徽章
+   */
+  appf_appformflag:function(){
+    var _this = this;
+    _this.setData({
+      appformflag:true
+    })
+  },
+
+  /**
+   * 更新订单记录徽章
+   */
+  order_orderflag:function(){
+    var _this = this;
+    _this.setData({
+      orderflag:true
+    })
   }
 })
